@@ -1,0 +1,19 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Ensure full height */
+  overflow: hidden; /* Prevent unwanted scrolling */
+}
+
+.content {
+  display: flex;
+  flex: 1; /* Allow the content area to expand */
+  overflow: hidden; /* Prevent scrolling */
+}
+
+.main-content {
+  flex: 1; /* Take up remaining space */
+  padding: 20px;
+  background-color: #e0e0e0;
+  overflow-y: auto; /* Only scroll if necessary */
+}
