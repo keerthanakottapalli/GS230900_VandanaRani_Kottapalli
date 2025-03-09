@@ -85,19 +85,28 @@ const SKUManagement: React.FC = () => {
 
   return (
     <Container>
-      <Button variant="contained" color="primary" onClick={() => handleOpen()}>
-        Add SKU
-      </Button>
 
-      <div className="ag-theme-alpine" style={{ width: "100%", height: 500,}}>
+      <div
+        className="ag-theme-alpine"
+        style={{
+          width: "100%",   // Adjust width as needed
+          height: "500px", // Fixed height
+          overflow: "auto" // Enable scrolling within the grid
+        }}
+      >
         <AgGridReact<SKU>
           rowData={skus}
           columnDefs={columnDefs}
-          domLayout="autoHeight"
+          domLayout="normal" // Ensures scrolling works properly
           modules={[ClientSideRowModelModule]}
           onCellValueChanged={handleCellValueChange}
         />
       </div>
+
+
+      <Button variant="contained" style={{backgroundColor: '#F1A1A8', marginTop: '20px'}} onClick={() => handleOpen()}>
+        Add SKU
+      </Button>
 
       {/* Dialog for adding/editing SKU */}
       <Dialog open={open} onClose={handleClose}>

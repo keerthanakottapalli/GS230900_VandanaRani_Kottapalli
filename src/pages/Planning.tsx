@@ -120,7 +120,6 @@ const PlanningScreen: React.FC = () => {
 
     return (
       <div>
-        <h2>Planning Screen</h2>
         <div className="ag-theme-alpine" style={{ width: "100%", height: "600px" }}>
           <AgGridReact
             rowData={rowData}

@@ -87,7 +87,7 @@ const StoreManagement: React.FC = () => {
         />
       </div>
 
-      <Button variant="contained" style={{backgroundColor: '#F1A1A8'}} onClick={() => setDialogOpen(true)}>
+      <Button variant="contained" style={{backgroundColor: '#F1A1A8', marginTop: '20px'}} onClick={() => setDialogOpen(true)}>
         New Store
       </Button>
       {/* Form to Add a New Store */}
