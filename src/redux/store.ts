@@ -4,8 +4,8 @@ import skuReducer from "./slices/skuSlice";
 
 export const store = configureStore({
   reducer: {
-    stores: storeReducer,
-    skus: skuReducer, // Add reducers here
+    stores: storeReducer,// Added reducers here
+    skus: skuReducer, 
   },
 });
 

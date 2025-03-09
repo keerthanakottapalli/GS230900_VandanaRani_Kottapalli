@@ -10,12 +10,12 @@ import ChartPage from "./pages/ChartPage";
 import Login from "./pages/Login";
 
 function App() {
-  const [user, setUser] = useState<User | null>(null); // ✅ Fix: Explicitly set type
+  const [user, setUser] = useState<User | null>(null); // Fix: Explicitly set type
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user); // ✅ No more type error
+      setUser(user); // No more type error
       setLoading(false);
     });
     return () => unsubscribe();

@@ -6,25 +6,15 @@ import { ColDef, ModuleRegistry } from "ag-grid-community";
 import { ClientSideRowModelModule } from "ag-grid-community";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
-import { calendarData } from "../data/CalenderData"; // ✅ Import new calendar data
-import { salesUnitsData } from "../data/SalesData"; // ✅ Import sales data
+import { calendarData } from "../data/CalenderData"; // Import new calendar data
+import { salesUnitsData } from "../data/SalesData"; // Import sales data
 
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
-// ✅ Store & SKU Interfaces
-interface Store {
-  id: string;
-  label: string;
-}
+// Store & SKU Interfaces
 
-interface SKU {
-  id: string;
-  label: string;
-  price: number;
-  cost: number;
-}
 
-// ✅ Planning Row Interface
+// Planning Row Interface
 interface PlanningRow {
   store: string;
   sku: string;
@@ -37,7 +27,7 @@ const PlanningScreen: React.FC = () => {
 
   const [rowData, setRowData] = useState<PlanningRow[]>([]);
 
-  // ✅ Initialize Table Data
+  // Initialize Table Data
   useEffect(() => {
     const newRowData: PlanningRow[] = [];
 
@@ -48,7 +38,7 @@ const PlanningScreen: React.FC = () => {
           sku: sku.label,
         };
 
-        // ✅ Initialize Sales Units from provided sales data
+        // Initialize Sales Units from provided sales data
         calendarData.forEach(({ week }) => {
           const salesRecord = salesUnitsData.find(
             (record) => record.Store === store.id && record.SKU === sku.id && record.Week === week
@@ -71,7 +61,7 @@ const PlanningScreen: React.FC = () => {
       setRowData(newRowData);
     }, [stores, skus]);
 
-    // ✅ AG-Grid Column Definitions
+    // AG-Grid Column Definitions
     const columnDefs: ColDef[] = [
       { field: "store", headerName: "Store", pinned: "left", width: 200 },
       { field: "sku", headerName: "SKU", pinned: "left", width: 250 },
@@ -79,11 +69,11 @@ const PlanningScreen: React.FC = () => {
         let monthGroup = acc.find((group) => group.headerName === monthLabel);
     
         if (!monthGroup) {
-          monthGroup = { headerName: monthLabel, marryChildren: true, children: [] }; // ✅ Fix: marryChildren
+          monthGroup = { headerName: monthLabel, marryChildren: true, children: [] }; // Fix: marryChildren
           acc.push(monthGroup);
         }
     
-        // ✅ Add all week-related fields under month
+        // Add all week-related fields under month
         monthGroup.children.push(
           { field: `units_${week}`, headerName: "Units", editable: true, width: 100 },
           {
@@ -103,7 +93,7 @@ const PlanningScreen: React.FC = () => {
             headerName: "GM %",
             width: 100,
             cellStyle: (params) => {
-              const value = parseFloat(params.value?.toString() || "0"); // ✅ Fix type issue
+              const value = parseFloat(params.value?.toString() || "0"); // Fix type issue
               if (value >= 40) return { backgroundColor: "green", color: "white" };
               if (value >= 10) return { backgroundColor: "yellow", color: "black" };
               if (value > 5) return { backgroundColor: "orange", color: "black" };

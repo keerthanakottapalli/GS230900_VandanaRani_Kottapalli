@@ -66,13 +66,7 @@ const StoreManagement: React.FC = () => {
     { field: "city", headerName: "City", minWidth: 200, flex: 1.5, editable: true },
     { field: "state", headerName: "State", minWidth: 150, flex: 1, editable: true },
   ];
-  
-  const defaultColDef: ColDef = {
-    flex: 1, // Makes columns expand to fit space
-    minWidth: 100, // Ensures columns don't get too small
-    resizable: true, // Allows manual resizing
-  };
-  
+
 
   return (
     <div >

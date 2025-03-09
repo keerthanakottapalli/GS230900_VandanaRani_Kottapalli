@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { skuData } from "../../data/SKUData"; // Import default SKU data
 
-// ✅ Define SKU type
+// Define SKU type
 export interface SKU {
   id: string;
   label: string;
@@ -9,7 +9,7 @@ export interface SKU {
   cost: number;
 }
 
-// ✅ Set initialState with sample data
+// Set initialState with sample data
 const initialState: SKU[] = skuData;
 
 const skuSlice = createSlice({
